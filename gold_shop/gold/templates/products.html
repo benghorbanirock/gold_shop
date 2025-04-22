@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Product List</h1>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <div class="image-container" id="image-{{ product.id }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" onclick="zoomImage(this)">
+                </div>
+                <h2>{{ product.name }}</h2>
+                <p>Price: {{ product.price }} USD</p>
+                <p>Description: {{ product.description }}</p>
+                <p>Rating: {{ product.rating }} ({{ product.review_count }} reviews)</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
